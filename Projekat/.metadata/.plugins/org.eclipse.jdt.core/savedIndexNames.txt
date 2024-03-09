@@ -1,0 +1,5 @@
+INDEX VERSION 1.134+/home/student/Desktop/Projekat/.metadata/.plugins/org.eclipse.jdt.core
+3939171498.index
+1865797976.index
+4031334782.index
+1204570644.index

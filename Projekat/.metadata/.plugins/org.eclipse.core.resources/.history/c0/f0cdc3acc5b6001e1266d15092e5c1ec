@@ -1,0 +1,40 @@
+package ru210540d;
+
+import java.awt.Button;
+import java.awt.GridLayout;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+
+
+public class main extends JFrame{
+
+	
+	public main() {
+		setSize(500,500);
+		setTitle("Projekat");
+		setLayout(new GridLayout());
+		Button startButton = new Button("START");
+		add(startButton);
+		startButton.addActionListener(ae -> {
+			V4 obj = null;
+			try {
+				obj = new V4();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			obj.setTitle("V4");
+			obj.setVisible(true);
+			dispose();
+		});
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+	
+	public static void main(String[] args) {
+		main main = new main();
+		main.setVisible(true);
+	}
+}

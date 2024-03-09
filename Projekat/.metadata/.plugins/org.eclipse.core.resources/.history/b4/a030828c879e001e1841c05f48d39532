@@ -1,0 +1,48 @@
+package ru210540d;
+
+import java.awt.*;
+import java.io.IOException;
+
+import org.snmp4j.CommunityTarget;
+import org.snmp4j.Snmp;
+import org.snmp4j.TransportMapping;
+import org.snmp4j.event.ResponseEvent;
+import org.snmp4j.smi.Address;
+import org.snmp4j.smi.GenericAddress;
+import org.snmp4j.smi.OctetString;
+import org.snmp4j.smi.UdpAddress;
+import org.snmp4j.transport.DefaultUdpTransportMapping;
+
+import javax.swing.JFrame;
+
+public class V4 extends JFrame {
+	
+	public static String comm="si2019";
+	
+	public static String r1="192.168.10.1";
+	public static String r2="192.168.20.1";
+	public static String r3="192.168.30.1";
+	
+	public static int port = 161;
+	public static int l_port = 1620;
+	
+	TransportMapping<UdpAddress> transport = new DefaultUdpTransportMapping();
+	Snmp snmp = new Snmp(transport);
+	transport.listen();
+
+	String address = "192.168.10.1/161"; // For example, R1_HOST
+	Address targetAddress = GenericAddress.parse(address);
+	CommunityTarget target = new CommunityTarget();
+	target.setCommunity(new OctetString("si2019"));
+	target.setAddress(targetAddress);
+	target.setRetries(1);
+	target.setTimeout(1500);
+	target.setVersion(SnmpConstants.version2c);
+	
+	public V4() {
+		setSize(200,200);
+		Button b = new Button("b");
+		
+		add(b);
+	}
+}

@@ -1,0 +1,17 @@
+package ru210540d;
+
+import java.awt.*;
+
+import org.snmp4j.*;
+
+import javax.swing.JFrame;
+
+public class V4 extends JFrame {
+	
+	public V4() {
+		setSize(200,200);
+		Button b = new Button("b");
+		
+		add(b);
+	}
+}

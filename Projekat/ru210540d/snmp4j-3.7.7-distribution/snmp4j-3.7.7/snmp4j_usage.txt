@@ -1,0 +1,233 @@
+
+SNMP4J SnmpCommand, version 3.1.0 - Copyright © 2004-2019, Frank Fock
+Type 'java -jar snmp4j.jar help <command>' for help on a specific command.
+Type 'java -jar snmp4j.jar example <command>' for examples on a specific command.
+Type 'java -jar snmp4j.jar version' to see the program version.
+
+Most commands take agent address and OID list arguments. A list of the
+available options for each command is listed after the command description.
+The description of all options follows the command list.
+
+Standard parameter formats are:
+
+<OID>:     An object identifier is either a dotted notation like '1.3.6.1.2.2.1.0'.
+<address>: [upd:|tcp:|tls:|dtls:]<host>[/<port>]
+Host is either an IP address or hostname and port is the SNMP port
+of the target SNMP entity.
+
+create-snapshot:
+    create-snapshot <file> <address> <OID>
+
+
+
+dump-snapshot:
+    dump-snapshot <file>
+
+
+
+example:
+    example <command>
+
+
+
+get:
+    get <address> <OID> [..]
+
+
+
+getbulk:
+    [-Cr <repeaters>] [-Cn <non-repeaters>] getbulk <address> <OID> [..]
+
+
+
+getnext:
+    getnext <address> <OID> [..]
+
+
+
+help:
+    help [command]|all
+
+
+
+inform:
+    inform <address> <OID>={<type>}<value> [..]
+
+
+
+listen:
+    listen <address>
+
+
+
+set:
+    set <address> <OID>={<type>}<value> [..]
+
+
+
+table:
+    table <address> <OID> [..]
+
+
+
+trap:
+    [-To <notificationID>] trap <address> <OID>={<type>}<value> [..]
+
+
+
+v1trap:
+    -Te eid -Ts sid -Tg gid -Ta addr v1trap <address> <OID>={<type>}<value> [..]
+
+
+
+version:
+    version
+
+
+
+walk:
+    walk <address> <OID>
+
+
+
+
+
+OPTIONS:
+    -A    authPassphrase    Set the authentication pass phrase for
+                            authenticated SNMPv3 messages.
+    -Cc   columnWidth       Print table columns with specified character width.
+    -Cf   columnSeparator   Separate table columns with the specified separator
+                            string. The table is printed in compact form. By
+                            default columns are separated by spaces and
+                            aligned.
+    -Ch                     Display only column headers.
+    -Ci                     Prepend the index for each printed row.
+    -Cil  lowerBoundIndex   Set the lower bound index for TABLE operations.
+    -Ciu  upperBoundIndex   Set the upper bound index for TABLE operations.
+    -Cl                     Left justify all cells when printing a table.
+    -Cn   non-repeaters     Set the non-repeaters field for GETBULK PDUs. It
+                            specifies the number of supplied variables that
+                            should not be iterated over. The default is 0.
+    -Cr   max-repetitions   Set the max-repetitions field for GETBULK PDUs.
+                            This specifies the maximum number of iterations
+                            over the repeating variables. The default is 10.
+    -Cw                     Specify the line width when printing tables
+    -Djavax.net.ssl.keyStore keyStoreFile The key store file with SSL keys for
+                            the TLS protocol.
+    -Djavax.net.ssl.keyStorePassword keyStorePassword The password for the key
+                            store file with SSL keys for TLS.
+    -Djavax.net.ssl.trustStore keyStoreFile The trust store file with trusted
+                            (public) SSL keys for the TLS protocol.
+    -Djavax.net.ssl.trustStorePassword keyStorePassword The password for the
+                            trust store file.
+    -Dn                     Do not use any default option values stored in
+                            config.
+    -E    contextEngineID   Set the context engine ID used for the SNMPv3
+                            scoped PDU. The authoritative engine ID will be
+                            used for the context engine ID, if the latter is
+                            not specified.
+    -Ors  maxSizeRespPDU    The maximum size of the response PDU in bytes.
+    -OtCSV                  For each SNMP row received exactly one row of comma
+                            separated values will printed to the console where
+                            the first column contains the row index.
+    -Otd                    Activates dense table operation mode which improves
+                            table retrieval performance on regular (dense)
+                            tables. This option must not be used with sparse
+                            tables.
+    -OttCSV                 Same as -OtCSV except that each row's first column
+                            will report the current time (millis after
+                            1.1.1970) when the request has been sent.
+    -Ta   agentAddress      Set the agent address field of a V1TRAP PDU. The
+                            default value is '0.0.0.0'.
+    -Te   enterpriseOID     Set the enterprise OID field of a V1TRAP PDU.
+    -Tg   genericID         Set the generic ID for SNMPv1 TRAPs (V1TRAP). The
+                            default is 0 (coldStart).
+    -To   trapOID           Sets the trapOID (1.3.6.1.6.3.1.1.4.1.0) of an
+                            INFORM or TRAP PDU. The default is
+                            1.3.6.1.6.3.1.1.5.1.
+    -Ts   specificID        Set the specific ID for V1TRAP PDU. The default is
+                            0.
+    -Tu   upTime            Set the sysUpTime field of an INFORM, TRAP, or
+                            V1TRAP PDU.
+    -Y    privacyPassphrase Set the privacy pass phrase for encrypted SNMPv3
+                            messages.
+    -a    authProtocol      Set the authentication protocol used to
+                            authenticate SNMPv3 messages. Valid values are MD5
+                            and SHA, SHA224, SHA256, SHA384, and SHA512.
+    -b    bindAddress       Set local interface and port to use for outgoing
+                            SNMP messages. By default this is 0.0.0.0/0 (host
+                            chosen port on all local IPv4 addresses).
+    -bc   engineBootCount   Set the engine boot count to the specified value
+                            greater or equal to zero. Default is zero.
+    -c    community         Set the community for SNMPv1/v2c messages.
+    -d    debugLevel        Set the global debug level for Log4J logging
+                            output. Valid values are OFF, ERROR, WARN, INFO,
+                            and DEBUG.
+    -dtls-version dtlsVersion Specifies the DTLS version to use. Possible
+                            values are DTLSv1.0 and DTLSv1.2 (default).
+    -e    engineID          Set the authoritative engine ID of the command
+                            responder used for SNMPv3 request messages. If not
+                            supplied, the engine ID will be discovered.
+    -f    1|2|3|4           Set the OID output format, where 1 = numeric, 2 =
+                            last name and numeric index, 3 = last name and
+                            formatted index without quoting, and 4 = last name
+                            and formatted index including hex-formatting of
+                            non-printable strings. The default is 4.
+    -h    windowSize        Set the window height in rows. If the value is
+                            greater than zero, every windowSize rows the user
+                            is prompted to continue output. Default is zero.
+    -ilo                    Do not check for lexicographic ordering errors
+                            while walking a subtree. Using this option may
+                            cause endless looping if an agent does not
+                            implement lexicographic ordering correctly!
+    -l    localEngineID     Set the local engine ID of the command generator
+                            and the notification receiver used for SNMPv3
+                            request messages. This option can be used to avoid
+                            engine ID clashes through duplicate IDs leading to
+                            usmStatsNotInTimeWindows reports.
+    -n    contextName       Set the target context name for SNMPv3 messages.
+                            Default is the empty string.
+    -p                      Dump sent and received packets as hex string.
+    -r    retries           Set the number of retries used for requests. A zero
+                            value will send out a request exactly once. Default
+                            is 1.
+    -rsl  low|basic|secure  Set the security level strategy for auto-responses
+                            to REPORT PDUs The default is 'low' for better
+                            error handling. Use 'secure' for max. security
+                            (i.e. never send noAuthNoPriv). The basic level is
+                            conforming to RFC 3412 and 3414 allowing
+                            'noAuthNoPriv' for engine ID discovery and wrong
+                            username reports.
+    -s                      Suppress any output on stderr (silent mode).
+    -t    timeout           Set the timeout in milliseconds between retries.
+                            Default is 1000 milliseconds.
+    -tls-local-id certAlias The local certificate alias identity which selects
+                            a certificate chain from the local key store. Only
+                            the selected certificate chain will be presented to
+                            the remote SNMP engine. Use this option with the
+                            "tls:" or "dtls:" transport domain.
+    -tls-peer-id subjectDN  The subject DN (e.g., "EMAILADDRESS=email@host.com,
+                            C=US, CN=My Name") of the trusted certificate
+                            presented by the remote SNMP engine ID. Use this
+                            option with the "tls:" or "dtls:" transport domain.
+    -tls-trust-ca issuerDN  The issuer DN (e.g., "Company Name CA") of a
+                            trusted certification authority (CA) presented by
+                            the remote SNMP engine ID for TLS and DTLS.
+    -tls-version tlsVersion The TLS version to use with the 'tls:' transport
+                            protocol. Currently only 'TLSv1', 'TLSv1.1', and
+                            'TLSv1.2' are supported with Java 7 or later.
+                            'TLSv1' is the default which is supported with Java
+                            6 too.
+    -u    securityName      Set the security name for authenticated v3
+                            messages.
+    -v    1|2c|3            Set the SNMP protocol version to be used. Default
+                            is 3.
+    -w    consoleWidth      Specifies the width of the console output, default
+                            is 80 characters.
+    -y    privacyProtocol   Set the privacy protocol to be used to encrypt
+                            SNMPv3 messages. Valid values are DES, AES
+                            (AES128), AES192, AES256, AES192p, AES256p, and
+                            3DES(DESEDE). The AES protocols that end with 'p'
+                            (for proprietary) are using a non-standardized key
+                            extension algorithm from 3DES.
+
